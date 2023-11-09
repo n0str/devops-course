@@ -1,0 +1,6 @@
+---
+# tasks file for roles/common
+
+- name: Set timezone to UTC
+  community.general.timezone:
+    name: UTC

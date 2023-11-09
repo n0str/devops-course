@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  minio:
+    container_name: Minio
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=supersecret
+    image: quay.io/minio/minio:latest
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - ./minio:/data
+    restart: unless-stopped
+  proxy:
+    image: pottava/s3-proxy
+    ports:
+      - '8080:80'
+    environment:
+      - AWS_ACCESS_KEY_ID=IfWZR7Bjy457Q1xvkLuP
+      - AWS_SECRET_ACCESS_KEY=U7D595YV40aGCtddtvmgqYRInkIxWZgVPO4IX4D4
+      - AWS_API_ENDPOINT=http://minio:9000
+      - AWS_S3_BUCKET=test
+      - INSECURE_TLS=true
+      - BASIC_AUTH_USER=admin
+      - BASIC_AUTH_PASS=password
+      - ACCESS_LOG=true
+      - DIRECTORY_LISTINGS=true
+    container_name: proxy

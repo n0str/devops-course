@@ -1,0 +1,15 @@
+version: '2'
+services:
+  proxy:
+    image: pottava/s3-proxy
+    network_mode: host
+    environment:
+      - AWS_ACCESS_KEY_ID=IfWZR7Bjy457Q1xvkLuP
+      - AWS_SECRET_ACCESS_KEY=U7D595YV40aGCtddtvmgqYRInkIxWZgVPO4IX4D4
+      - AWS_API_ENDPOINT=192.168.144.2:9000
+      - APP_PORT=8080
+      - AWS_S3_BUCKET=test
+      - BASIC_AUTH_USER=admin
+      - BASIC_AUTH_PASS=password
+      - ACCESS_LOG=true
+    container_name: proxy

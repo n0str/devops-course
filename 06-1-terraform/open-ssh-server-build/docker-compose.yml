@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+  openssh-server:
+    build: 
+      context: ./src
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - SUDO_ACCESS=false
+      - PASSWORD_ACCESS=true
+      - USER_PASSWORD=user
+      - USER_NAME=user
+      - PUBLIC_KEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtRri/FbyVIr8BVDPZ3dttwu/R8NlWUkbjUWcRpXEXA4QWdKTqqDRoaB/n8J3ZEOGeiNP4Nw6tlusJh0vShK9Y9zQ5clLN58Dc+vMhS1qy79wY5Jdrd5BqeujoF+A6IbQyXnl/yaRS0r/MEkjIqD0cr2wTCuwbRO//9o1cCxu0AuLXcdiMsLy9jc0YCjURFR5IGAn8dLdeqx/oZDuh847V2teSZ+yDPUjGdzUhFV2fxDJs9txeoXRE+7CXSPSWmV2vTRPkXY/XcmLhMIPBp44l6uAyt8eQIFMZnTzfrnjxxWDsnEJS9UpaEREihk68dtfrcVvPdZH0eW58wwCL6IP0c002Jl9BzoTKtycBNVbtZB9pgg5SEBFYMzt7h7k9yPLvsCIvSRpd/jGUiRwcsKYCguDC/NhPH9OQ8VyeDiS9jwLY16M8hCPGtVi6IklDXb3RTFxSQuwK503vOkmyruEeDtjydUplFe8O9dlstYAGVx2ELNX3AwCVGHtmSrIRbjs=
+    ports:
+      - 2222:2222
+    restart: unless-stopped
+    pids_limit: 500
+    cpus: 1.0
+    mem_limit: 256M
