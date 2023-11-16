@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: simple-webapp
+  template:
+    metadata:
+      labels:
+        name: simple-webapp
+    spec:
+      containers:
+      - name: frontend
+        image: yeasy/simple-web:latest
+        ports:
+        - containerPort: 80
