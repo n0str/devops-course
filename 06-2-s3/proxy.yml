@@ -6,7 +6,7 @@ services:
     environment:
       - AWS_ACCESS_KEY_ID=IfWZR7Bjy457Q1xvkLuP
       - AWS_SECRET_ACCESS_KEY=U7D595YV40aGCtddtvmgqYRInkIxWZgVPO4IX4D4
-      - AWS_API_ENDPOINT=192.168.144.2:9000
+      - AWS_API_ENDPOINT=http://192.168.144.2:9000
       - APP_PORT=8080
       - AWS_S3_BUCKET=test
       - BASIC_AUTH_USER=admin
